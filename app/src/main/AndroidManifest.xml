@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mediaplayer">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MediaPlayer">
+        <activity android:name=".activities.PermitActivity">
+        </activity>
+        <activity
+            android:name=".activities.PlayerActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".activities.PlayerActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.PlayerActivity"/>
+        </activity>
+        <activity
+            android:name=".activities.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:parentActivityName=".activities.PlayerActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.PlayerActivity"/>
+        </activity>
+
+        <service android:name=".services.MusicService"/>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
